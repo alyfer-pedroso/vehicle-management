@@ -3,7 +3,7 @@ import { Filters, Map } from "@/components/template";
 
 export const Main: FC = () => {
   return (
-    <main className="w-[calc(100vw-2dvw)] pr-[1dvw] ml-[2dvw]">
+    <main className="w-full max-w-[1188px] mx-auto pl-6 pr-3 sm:pl-9.5 sm:pr-[1.1875rem]">
       <Filters />
       <Map />
     </main>
