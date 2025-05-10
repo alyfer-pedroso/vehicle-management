@@ -1,8 +1,10 @@
 import type { ComponentProps, FC } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 import type { MapProps } from "@/models/google";
 import { DEFAULT_CENTER } from "@/constants/google";
+
+import { Marker } from "@/components/google";
 import { Loading } from "@/components/template";
 
 const API_KEY = import.meta.env.VITE_GOOGLEAPI;
@@ -16,7 +18,7 @@ export const Maps: FC<props> = ({ googleMap, ...props }) => {
     <LoadScript googleMapsApiKey={API_KEY} language="pt-BR" loadingElement={<Loading className="w-full h-full" />}>
       <GoogleMap center={DEFAULT_CENTER} zoom={10} {...googleMap}>
         {props?.markers.map(({ id, ...pos }) => (
-          <Marker key={id} position={pos} />
+          <Marker color="red" key={id} position={pos} />
         ))}
       </GoogleMap>
     </LoadScript>
