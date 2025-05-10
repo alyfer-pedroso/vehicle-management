@@ -7,5 +7,5 @@ interface props {
 }
 
 export const Container: FC<props> = ({ children, ...props }) => {
-  return <section className={cn("bg-blue-15 border border-blue-30 rounded-2xl", props?.className)}>{children}</section>;
+  return <section className={cn("bg-blue-15 border border-blue-30 rounded-2xl mb-4", props?.className)}>{children}</section>;
 };

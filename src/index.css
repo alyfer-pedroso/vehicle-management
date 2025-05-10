@@ -48,6 +48,7 @@
 
   --color-gray-10: #89919b;
   --color-gray-20: #8a939d;
+  --color-gray-30: #c8c8c8;
 }
 
 :root {
@@ -126,4 +127,38 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+body::-webkit-scrollbar,
+.scrollstyled::-webkit-scrollbar {
+  width: 1.2rem; /* 0 por enquanto */
+  background-color: #001622;
+  border-radius: 0.5rem;
+}
+body::-webkit-scrollbar-thumb,
+.scrollstyled::-webkit-scrollbar-thumb,
+.scrollstyled-bold::-webkit-scrollbar-thumb {
+  background-color: #002d44;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+body::-webkit-scrollbar:horizontal,
+.scrollstyled::-webkit-scrollbar:horizontal {
+  height: 0.8rem;
+  background-color: #001622;
+  border-radius: 0.5rem;
+}
+body::-webkit-scrollbar-thumb:horizontal,
+.scrollstyled::-webkit-scrollbar-thumb:horizontal {
+  background-color: #002d44;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.scrollstyled.scrollstyled-bg-white::-webkit-scrollbar,
+.scrollstyled.scrollstyled-bg-white::-webkit-scrollbar:horizontal {
+  background-color: #fff;
+}
+.scrollstyled.scrollstyled-bg-mbr-blue-50::-webkit-scrollbar,
+.scrollstyled.scrollstyled-bg-mbr-blue-50::-webkit-scrollbar:horizontal {
+  background-color: #ecf3f9;
 }
