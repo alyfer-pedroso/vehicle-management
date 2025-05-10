@@ -6,3 +6,4 @@ export { App } from "./app";
 export { SearchInput } from "./search-input";
 export { RadioInput } from "./radio-input";
 export { Container } from "./container";
+export { Loading } from "./loading";

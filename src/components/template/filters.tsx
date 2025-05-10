@@ -5,8 +5,8 @@ import { Button } from "@/components/ui";
 
 export const Filters: FC = () => {
   return (
-    <section className="w-full flex justify-between items-center pt-8 pb-5.5 mb-4 border-b border-blue-30">
-      <div className="basis-1/4 flex justify-between">
+    <section className="w-full flex flex-wrap justify-between items-center gap-4 pt-8 pb-5.5 mb-4 border-b border-blue-30">
+      <div className="min-w-1/4 flex justify-between gap-4">
         <h2 className="text-white font-semibold text-[1.1rem]">Lista</h2>
 
         <div className="flex items-center gap-4.5">
@@ -15,7 +15,7 @@ export const Filters: FC = () => {
         </div>
       </div>
 
-      <div className="basis-1/2 flex justify-end gap-4">
+      <div className="min-w-1/2 flex justify-end gap-4">
         <SearchInput />
 
         <Button
