@@ -1,4 +1,4 @@
 export enum Type {
   TRACKED = "tracked",
-  OHTERS = "others",
+  OTHERS = "others",
 }
