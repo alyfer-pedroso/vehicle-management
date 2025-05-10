@@ -10,7 +10,7 @@ export const Filters: FC = () => {
         <h2 className="text-white font-semibold text-[1.1rem]">Lista</h2>
 
         <div className="flex items-center gap-4.5">
-          <RadioInput id="tracked" name="list" labelText="Rastreados" />
+          <RadioInput id="tracked" name="list" labelText="Rastreados" defaultChecked />
           <RadioInput id="others" name="list" labelText="Outros" />
         </div>
       </div>
