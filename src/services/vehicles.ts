@@ -19,7 +19,7 @@ const getVehicles = async ({ pageParam = 1, ...params }: Params) => {
     });
     return data;
   } catch (err) {
-    toast(getError(err), { dismissible: true });
+    toast.error(getError(err), { dismissible: true });
     return Promise.reject(err);
   }
 };

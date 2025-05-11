@@ -13,7 +13,7 @@ export interface Root {
 
 export interface Content {
   vehicles: Vehicle[];
-  locationVehicles: LocationVehicle[];
+  locationVehicles?: LocationVehicle[];
   totalPages: number;
   page: number;
   perPage: number;
