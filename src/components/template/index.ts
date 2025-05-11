@@ -9,3 +9,4 @@ export { Container } from "./container";
 export { Loading } from "./loading";
 export { VehiclesTable } from "./vehicles-table";
 export { FilterList } from "./filter-list";
+export { InfiniteScroll } from "./infinite-scroll";
