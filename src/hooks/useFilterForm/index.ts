@@ -26,6 +26,7 @@ export function useFilterForm() {
 
   function handleFilter(data: FormDataSchema) {
     setSearchParams((params) => {
+      params.delete("filter");
       Object.keys(data).forEach((key) => {
         const newKey = (key as keyof FormDataSchema) ?? "";
 
