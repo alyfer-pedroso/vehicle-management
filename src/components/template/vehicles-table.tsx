@@ -37,7 +37,7 @@ export const VehiclesTable: FC<props> = memo(({ vehicles, ...props }) => {
           {vehicles?.map((value) => (
             <TableProvider.TableRow key={value.id}>
               <TableProvider.TableCell>{value.plate}</TableProvider.TableCell>
-              <TableProvider.TableCell>{value?.fleet ?? "Sem frota"}</TableProvider.TableCell>
+              <TableProvider.TableCell>{value?.fleet === "string" ? "Sem frota" : value.fleet ?? "Sem frota"}</TableProvider.TableCell>
               <TableProvider.TableCell>{value.type}</TableProvider.TableCell>
               <TableProvider.TableCell>{value.model}</TableProvider.TableCell>
               <TableProvider.TableCell>{value.status}</TableProvider.TableCell>

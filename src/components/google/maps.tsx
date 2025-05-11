@@ -18,8 +18,9 @@ export const Maps: FC<props> = memo(({ googleMap, ...props }) => {
   return (
     <LoadScript googleMapsApiKey={API_KEY} language="pt-BR" loadingElement={props?.loadingElement}>
       <GoogleMap zoom={10} {...googleMap} center={googleMap?.center ?? DEFAULT_CENTER}>
-        {props?.markers?.map((data) => (
-          <VehicleMarker key={data?.id} {...data} />
+        {props?.markers?.map((data, idx) => (
+          //? passando a key como idx, pois tem ids do retorno que estao duplicados
+          <VehicleMarker key={idx} {...data} />
         ))}
       </GoogleMap>
     </LoadScript>

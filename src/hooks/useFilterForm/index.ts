@@ -5,24 +5,24 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { formSchema } from "@/constants/filter";
+import { formSchema, isValidType } from "@/constants/filter";
 import type { FormDataSchema } from "@/models/filter";
 import { Type } from "@/models/api";
 
 export function useFilterForm() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const typeParam = searchParams.get("type") || "";
+  const filterParam = searchParams.get("filter") || "";
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataSchema>({
     resolver: zodResolver(formSchema),
-    defaultValues: { type: Type.TRACKED },
+    values: { type: isValidType(typeParam) ? (typeParam as Type) : Type.TRACKED },
   });
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const typeParam = searchParams.get("type") || "";
-  const filterParam = searchParams.get("filter") || "";
 
   function handleFilter(data: FormDataSchema) {
     setSearchParams((params) => {
@@ -53,8 +53,14 @@ export function useFilterForm() {
     setSearchParams(searchParams);
   }, [searchParams, setSearchParams]);
 
+  const resetFilter = useCallback(() => {
+    const searchParams = new URLSearchParams();
+    searchParams.set("type", Type.TRACKED);
+    setSearchParams(searchParams);
+  }, [setSearchParams]);
+
   useLayoutEffect(() => {
-    if (typeParam.toUpperCase() in Type) return;
+    if (isValidType(typeParam)) return;
     setTypeParamToDefault();
   }, [typeParam, setTypeParamToDefault]);
 
@@ -63,5 +69,6 @@ export function useFilterForm() {
     handleSubmit: handleSubmit(handleFilter, handleErrors),
     typeParam,
     filterParam,
+    resetFilter,
   };
 }

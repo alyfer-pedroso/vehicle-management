@@ -31,7 +31,13 @@ export const Map: FC<props> = memo(({ locationVehicles, ...props }) => {
 
         <Maps
           markers={locationVehicles}
-          googleMap={{ mapContainerClassName: "min-h-[50dvh] rounded-2xl mt-4", zoom: 12, clickableIcons: false, center: locationVehicles[1] }}
+          googleMap={{
+            mapContainerClassName: "min-h-[50dvh] rounded-2xl mt-4",
+            zoom: 5,
+            clickableIcons: false,
+            center: locationVehicles[1],
+            options: { streetViewControl: false },
+          }}
           loadingElement={<Loading className="w-full min-h-[50dvh]" />}
         />
       </div>
