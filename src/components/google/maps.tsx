@@ -3,10 +3,9 @@ import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 import type { LocationVehicle } from "@/models/vehicles";
 import { DEFAULT_CENTER } from "@/constants/google";
+import { GOOGLE_API_KEY } from "@/constants/env";
 
 import { VehicleMarker } from "@/components/template";
-
-const API_KEY = import.meta.env.VITE_GOOGLEAPI;
 
 interface props {
   googleMap?: ComponentProps<typeof GoogleMap>;
@@ -16,7 +15,7 @@ interface props {
 
 export const Maps: FC<props> = memo(({ googleMap, ...props }) => {
   return (
-    <LoadScript googleMapsApiKey={API_KEY} language="pt-BR" loadingElement={props?.loadingElement}>
+    <LoadScript googleMapsApiKey={GOOGLE_API_KEY} language="pt-BR" loadingElement={props?.loadingElement}>
       <GoogleMap zoom={10} {...googleMap} center={googleMap?.center ?? DEFAULT_CENTER}>
         {props?.markers?.map((data, idx) => (
           //? passando a key como idx, pois tem ids do retorno que estao duplicados
