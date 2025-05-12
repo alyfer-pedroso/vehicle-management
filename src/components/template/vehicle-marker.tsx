@@ -1,8 +1,8 @@
 import { memo, useState, type FC } from "react";
 import { Marker, OverlayView } from "@react-google-maps/api";
 
-import { MarkerIcon } from "@/components/google";
 import { VehicleDetails } from "@/components/template";
+import { Vehicle } from "@/components/icons";
 
 import { markerColorByIgnition } from "@/constants/vehicle";
 import type { LocationVehicle } from "@/models/vehicles";
@@ -24,7 +24,7 @@ export const VehicleMarker: FC<LocationVehicle> = memo(({ ...props }) => {
         onClick={handleClick}
         position={{ lat, lng }}
         icon={{
-          url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(MarkerIcon(markerColorByIgnition[props.ignition])),
+          url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(Vehicle(markerColorByIgnition[props.ignition])),
           scaledSize: new window.google.maps.Size(50, 50),
         }}
       />

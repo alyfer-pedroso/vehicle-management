@@ -21,7 +21,10 @@ export function useFilterForm() {
     formState: { errors },
   } = useForm<FormDataSchema>({
     resolver: zodResolver(formSchema),
-    values: { type: isValidType(typeParam) ? (typeParam as Type) : Type.TRACKED },
+    values: {
+      type: isValidType(typeParam) ? (typeParam as Type) : Type.TRACKED,
+      filter: filterParam,
+    },
   });
 
   function handleFilter(data: FormDataSchema) {

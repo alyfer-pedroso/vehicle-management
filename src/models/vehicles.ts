@@ -6,6 +6,11 @@ export enum VehicleIgnition {
   OFF = "Desligado",
 }
 
+export enum VehicleType {
+  IMPLEMENT = "implement",
+  VEHICLE = "vehicle",
+}
+
 export interface Root {
   statusCode: number;
   message: string;
@@ -24,7 +29,7 @@ export interface Vehicle {
   id: string;
   plate: string;
   fleet?: string | null;
-  type: string;
+  type: VehicleType;
   model: string;
   nameOwner: string;
   status: string;
