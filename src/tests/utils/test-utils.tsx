@@ -32,6 +32,5 @@ const customRender = (ui: ReactElement, options?: CustomRenderOptions) => {
   return render(ui, { wrapper: TestProviders, ...options });
 };
 
-// Re-export everything from RTL
 export * from "@testing-library/react";
 export { customRender as render };
