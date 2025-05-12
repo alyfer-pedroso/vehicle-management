@@ -20,7 +20,7 @@ export const VehicleMarker: FC<LocationVehicle> = memo(({ ...props }) => {
   return (
     <>
       <Marker
-        title="Clique para ver detalhes do veículo"
+        title={`Clique para ver detalhes do veículo, ignição: ${props.ignition}`}
         onClick={handleClick}
         position={{ lat, lng }}
         icon={{
