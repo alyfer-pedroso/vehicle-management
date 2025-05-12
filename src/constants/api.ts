@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_APIBASEURL,
-  headers: { Authorization: `Bearer ${import.meta.env.VITE_APITOKEN}` },
+  baseURL: process.env.VITE_APIBASEURL,
+  headers: { Authorization: `Bearer ${process.env.VITE_APITOKEN}` },
 });
 
 const getError = (error: unknown, internalServerErroMsg?: string) => {

@@ -22,9 +22,9 @@ export function useMain() {
     staleTime: ALMOST_TWO_MIN,
   });
 
-  const onScrollEnd = () => {
+  const onScrollEnd = async () => {
     if (hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
+      await fetchNextPage();
     }
   };
 

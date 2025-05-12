@@ -6,7 +6,7 @@ import { DEFAULT_CENTER } from "@/constants/google";
 
 import { VehicleMarker } from "@/components/template";
 
-const API_KEY = import.meta.env.VITE_GOOGLEAPI;
+const API_KEY = process.env.VITE_GOOGLEAPI ?? "";
 
 interface props {
   googleMap?: ComponentProps<typeof GoogleMap>;
