@@ -1,4 +1,5 @@
-import type { MarkerData } from "./google";
+import type { MarkerData } from "@/models/google";
+import type { IBaseModal } from "@/models/modal";
 
 export enum VehicleIgnition {
   ON = "Ligado",
@@ -38,4 +39,8 @@ export interface LocationVehicle extends MarkerData {
   plate: string;
   ignition: VehicleIgnition;
   createdAt: string;
+}
+
+export interface IVehicleDetailsModal extends Omit<IBaseModal, "show"> {
+  show: (data?: LocationVehicle) => void;
 }
