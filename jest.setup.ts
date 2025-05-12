@@ -1,21 +1,17 @@
-// Add extended matchers
 import "@testing-library/jest-dom";
 import React from "react";
 
-// Mock react-router-dom
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useSearchParams: jest.fn(),
   Link: ({ children, to }: { children: React.ReactNode; to: string }) => React.createElement("a", { href: to }, children),
 }));
 
-// Mock @tanstack/react-query
 jest.mock("@tanstack/react-query", () => ({
   ...jest.requireActual("@tanstack/react-query"),
   useInfiniteQuery: jest.fn(),
 }));
 
-// Mock @react-google-maps/api
 jest.mock("@react-google-maps/api", () => ({
   Marker: ({ children }: { children: React.ReactNode }) => React.createElement("div", { "data-testid": "google-map-marker" }, children),
   OverlayView: ({ children }: { children: React.ReactNode }) => React.createElement("div", { "data-testid": "google-map-overlay" }, children),
@@ -23,7 +19,6 @@ jest.mock("@react-google-maps/api", () => ({
   useLoadScript: jest.fn().mockReturnValue({ isLoaded: true, loadError: null }),
 }));
 
-// Mock axios
 jest.mock("axios", () => ({
   create: jest.fn(() => ({
     get: jest.fn(),
@@ -34,7 +29,6 @@ jest.mock("axios", () => ({
   isAxiosError: jest.fn(),
 }));
 
-// Mock window.google
 Object.defineProperty(window, "google", {
   value: {
     maps: {
@@ -51,7 +45,6 @@ Object.defineProperty(window, "google", {
   writable: true,
 });
 
-// Mock sonner
 jest.mock("sonner", () => ({
   toast: {
     error: jest.fn(),
@@ -59,5 +52,4 @@ jest.mock("sonner", () => ({
   },
 }));
 
-// Create a file mock for images/SVGs
 global.URL.createObjectURL = jest.fn();

@@ -12,6 +12,12 @@ jest.mock("@/hooks/useFilterForm", () => ({
   useFilterForm: jest.fn(),
 }));
 
+jest.mock("@/constants/env", () => ({
+  API_BASE_URL: "https://mock-api.test",
+  API_TOKEN: "mocked-token",
+  GOOGLE_API_KEY: "mocked-google-api-key",
+}));
+
 jest.mock("@/services/vehicles", () => ({
   getVehicles: jest.fn(),
 }));
