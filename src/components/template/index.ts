@@ -8,3 +8,8 @@ export { RadioInput } from "./radio-input";
 export { Container } from "./container";
 export { Loading } from "./loading";
 export { VehiclesTable } from "./vehicles-table";
+export { FilterList } from "./filter-list";
+export { InfiniteScroll } from "./infinite-scroll";
+export { VehicleMarker } from "./vehicle-marker";
+export { DisabledMapMsg } from "./disabled-map-msg";
+export { VehicleDetails } from "./vehicle-details";

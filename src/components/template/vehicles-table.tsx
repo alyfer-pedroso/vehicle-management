@@ -1,10 +1,27 @@
-import type { FC } from "react";
-import { Container } from "@/components/template";
-import { TableProvider } from "@/components/ui";
+import { memo, type FC } from "react";
 
-export const VehiclesTable: FC = () => {
+import { Container, Loading } from "@/components/template";
+import { TableProvider } from "@/components/ui";
+import type { Vehicle } from "@/models/vehicles";
+import { cn } from "@/lib/utils";
+
+interface props {
+  vehicles?: Vehicle[];
+  isFetchingNextPage?: boolean;
+  isLoading?: boolean;
+}
+
+export const VehiclesTable: FC<props> = memo(({ vehicles, ...props }) => {
+  const disabled = !vehicles?.length && !props.isFetchingNextPage && !props.isLoading;
+
+  if (props.isLoading) {
+    return <Loading className="w-full" />;
+  }
+
   return (
-    <Container className="overflow-hidden">
+    <Container className={cn("relative overflow-hidden", { "blur-[1px]": props.isFetchingNextPage })}>
+      {props.isFetchingNextPage && <Loading className="w-full h-full absolute top-0 left-0 items-end pb-[25%]" />}
+
       <TableProvider.Table>
         <TableProvider.TableHeader>
           <TableProvider.TableRow>
@@ -17,17 +34,23 @@ export const VehiclesTable: FC = () => {
         </TableProvider.TableHeader>
 
         <TableProvider.TableBody>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <TableProvider.TableRow key={i}>
-              <TableProvider.TableCell>EAD 7328</TableProvider.TableCell>
-              <TableProvider.TableCell>000001</TableProvider.TableCell>
-              <TableProvider.TableCell>Implemento</TableProvider.TableCell>
-              <TableProvider.TableCell>F MAX Select</TableProvider.TableCell>
-              <TableProvider.TableCell>Em manuntenção</TableProvider.TableCell>
+          {vehicles?.map((value) => (
+            <TableProvider.TableRow key={value.id}>
+              <TableProvider.TableCell>{value.plate}</TableProvider.TableCell>
+              <TableProvider.TableCell>{value?.fleet === "string" ? "Sem frota" : value.fleet ?? "Sem frota"}</TableProvider.TableCell>
+              <TableProvider.TableCell>{value.type}</TableProvider.TableCell>
+              <TableProvider.TableCell>{value.model}</TableProvider.TableCell>
+              <TableProvider.TableCell>{value.status}</TableProvider.TableCell>
             </TableProvider.TableRow>
           ))}
+
+          {disabled && (
+            <TableProvider.TableRow>
+              <TableProvider.TableCell colSpan={5}>Nenhum veículo encontrado!</TableProvider.TableCell>
+            </TableProvider.TableRow>
+          )}
         </TableProvider.TableBody>
       </TableProvider.Table>
     </Container>
   );
-};
+});

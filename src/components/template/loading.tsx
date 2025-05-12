@@ -10,7 +10,7 @@ interface props {
 export const Loading: FC<props> = ({ ...props }) => {
   return (
     <div className={cn("flex justify-center items-center", props?.className)}>
-      <Loader className="size-12 animate-spin" color="white" />
+      <Loader className="size-12 animate-spin text-white" />
     </div>
   );
 };
